@@ -34,6 +34,7 @@
 	casks = [
 	  "firefox"
 	  "alt-tab"
+    "steam"
 	];
 	masApps = {
 	};

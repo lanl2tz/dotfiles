@@ -24,6 +24,7 @@
 	  pkgs.kitty
 	  pkgs.tmux
 	  pkgs.obsidian
+	  pkgs.zsh-powerlevel10k
 	  pkgs.mkalias
         ];
   
@@ -91,7 +92,7 @@
       # Enable alternative shell support in nix-darwin.
       # programs.fish.enable = true;
       programs.zsh.enable = true;  # default shell on catalina
-
+      programs.zsh.promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
       # Set Git commit hash for darwin-version.
       system.configurationRevision = self.rev or self.dirtyRev or null;
 

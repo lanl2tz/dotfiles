@@ -51,6 +51,7 @@
     #   org.gradle.daemon.idletimeout=3600000
     # '';
     ".zshrc".source = ~/dotfiles/zshrc/.zshrc;
+    ".p10k.zsh".source = ~/dotfiles/zshrc/p10k/.p10k.zsh;
     ".config/kitty".source = ~/dotfiles/kitty;
     # ".config/wezterm".source = ~/dotfiles/wezterm;
     # ".config/skhd".source = ~/dotfiles/skhd;

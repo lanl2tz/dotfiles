@@ -16,12 +16,19 @@
   let
     configuration = { pkgs, config, ... }: {
       nixpkgs.config.allowUnfree = true;
+      nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+        "steam"
+	"steam-original"
+	"steam-unwrapped"
+	"steam-run"
+      ];
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages =
         [ 
 	  pkgs.neovim
 	  pkgs.kitty
+	  pkgs.steam
 	  pkgs.tmux
 	  pkgs.obsidian
 	  pkgs.zsh-powerlevel10k
@@ -93,6 +100,13 @@
       # programs.fish.enable = true;
       programs.zsh.enable = true;  # default shell on catalina
       programs.zsh.promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+      
+      programs.steam = {
+        enable = true;
+	remotePlay.openFirewall = true;
+	dedicatedServer.openFirewall = true;
+	localNetworkGameTransfers.openFirewall = true;
+      };
       # Set Git commit hash for darwin-version.
       system.configurationRevision = self.rev or self.dirtyRev or null;
 
